@@ -30,4 +30,17 @@
  */
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
+  if (weight <= 0 || orderTotal < 0) return -1
+  if (orderTotal > 50 && country === "US") return 0
+  if (orderTotal > 100 && country !== "US") return 0
+  let totalCost = 0;
+  if (weight <= 1) {
+    country === "US"? totalCost += 5 : totalCost += 15
+  } else if (weight > 1 && weight <= 5) {
+    country === "US"? totalCost += 10 : totalCost += 25
+  } else {
+    country === "US"? totalCost += 15 : totalCost += 40
+  }
+
+  return totalCost
 }
